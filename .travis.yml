@@ -10,8 +10,8 @@ before_script:
 script:
   - docker --version
   - docker build -t udagram-users .
-  - docker tag udagram-users asafalkhasov/udagram-users:3.1
+  - docker tag udagram-users asafalkhasov/udagram-users:$TRAVIS_JOB_NUMBER
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push asafalkhasov/udagram-users:3.1
+  - docker push asafalkhasov/udagram-users:$TRAVIS_JOB_NUMBER
