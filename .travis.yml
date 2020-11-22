@@ -9,7 +9,7 @@ before_script:
   - echo "No tests"
 script:
   - docker --version
-  - docker build -t udagram-users .
+  - docker build . -t udagram-users
   - docker tag udagram-users asafalkhasov/udagram-users:$TRAVIS_JOB_NUMBER
 
 after_success:
