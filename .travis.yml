@@ -7,12 +7,11 @@ install:
   - echo "Nothing to install"
 before_script:
   - echo "No tests"
-  - echo $TRAVIS_JOB_NUMBER
 script:
   - docker --version
   - docker build -t udagram-users .
-  - docker tag udagram-users asafalkhasov/udagram-users:$TRAVIS_JOB_NUMBER
+  - docker tag udagram-users asafalkhasov/udagram-users:3.1
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push asafalkhasov/udagram-users:$TRAVIS_JOB_NUMBER
+  - docker push asafalkhasov/udagram-users:3.1
